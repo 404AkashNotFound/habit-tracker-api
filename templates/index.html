@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Habit Tracker API</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <h1>🚀 Habit Tracker</h1>
+  <p>This is a simple frontend to interact with the backend API.</p>
+
+  <h2>Add a New Habit</h2>
+  <form id="habitForm">
+    <input type="text" id="user" placeholder="User" required />
+    <input type="text" id="habit" placeholder="Habit" required />
+    <input type="text" id="frequency" placeholder="Frequency (e.g., Daily)" required />
+    <button type="submit">Add Habit</button>
+  </form>
+
+  <h2>All Habits</h2>
+  <button onclick="fetchHabits()">Refresh List</button>
+  <ul id="habitList"></ul>
+
+  <script>
+    async function fetchHabits() {
+      const res = await fetch("/habits");
+      const habits = await res.json();
+      const list = document.getElementById("habitList");
+      list.innerHTML = "";
+      habits.forEach(h => {
+        const li = document.createElement("li");
+        li.textContent = `${h.user}: ${h.habit} (${h.frequency})`;
+        list.appendChild(li);
+      });
+    }
+
+    document.getElementById("habitForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const user = document.getElementById("user").value;
+      const habit = document.getElementById("habit").value;
+      const frequency = document.getElementById("frequency").value;
+
+      const res = await fetch("/habits", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user, habit, frequency })
+      });
+
+      if (res.ok) {
+        alert("Habit added!");
+        fetchHabits();
+        e.target.reset();
+      } else {
+        alert("Failed to add habit.");
+      }
+    });
+
+    // Load habits when the page loads
+    fetchHabits();
+  </script>
+</body>
+</html>
