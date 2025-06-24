@@ -1,49 +1,11 @@
-# 🧠 Habit Tracker API
+# 🧠 Habit Tracker API  
 
-A simple Habit Tracker built using **Flask**, **MongoDB**, and a basic **HTML + JS** frontend.  
-Built during the Keploy GitHub Learning Program to practice REST API design, database integration, and full-stack basics.
-
----
-
-## 🚀 Features
-
-- 🛠️ Custom REST API with 5 endpoints  
-- 🧾 CRUD operations on habits  
-- 🧮 MongoDB backend  
-- 🌐 HTML + JavaScript frontend  
-- 🔐 Environment variables support  
+A simple Habit Tracker API built using **Flask** and **MongoDB**, with a basic HTML + JS frontend to interact with it.  
+This project was developed as part of the **Keploy GitHub Learning Program** to practice REST API design, full-stack integration, and automated testing.  
 
 ---
 
-## 📁 Project Structure
-
-\`\`\`
-habit-tracker/
-├── app.py                 # Main Flask app
-├── config.py              # MongoDB connection
-├── routes/
-│   └── habit_routes.py    # API endpoints
-├── templates/
-│   └── index.html         # Frontend
-├── static/
-│   └── style.css          # CSS
-├── .env                   # Environment config
-├── requirements.txt       # Python deps
-└── README.md              # This file
-\`\`\`
-
----
-
-## 📦 Tech Stack
-
-- **Backend:** Flask (Python)  
-- **Frontend:** HTML, JavaScript  
-- **Database:** MongoDB  
-- **Tools:** dotenv, Flask-CORS  
-
----
-
-## 🌐 API Documentation
+## 🌐 API Endpoints  
 
 | Method | Endpoint                        | Description              |
 |--------|---------------------------------|--------------------------|
@@ -55,107 +17,85 @@ habit-tracker/
 
 ---
 
-## 📥 Sample Requests
+## 📦 Tech Stack  
 
-### ➕ Add Habit
-
-\`\`\`bash
-curl -X POST http://localhost:5000/habits \
--H "Content-Type: application/json" \
--d '{"user": "akash", "habit": "Coding", "frequency": "Daily"}'
-\`\`\`
-
-### 🔍 Get Habits
-
-\`\`\`bash
-curl http://localhost:5000/habits/akash
-\`\`\`
-
-### ✏️ Update Habit
-
-\`\`\`bash
-curl -X PUT http://localhost:5000/habits/akash/Coding \
--H "Content-Type: application/json" \
--d '{"frequency": "Weekly"}'
-\`\`\`
-
-### ❌ Delete Habit
-
-\`\`\`bash
-curl -X DELETE http://localhost:5000/habits/akash/Coding
-\`\`\`
+- **Backend:** Flask (Python)  
+- **Database:** MongoDB (PyMongo)  
+- **Frontend:** HTML + JavaScript  
+- **Other Tools:** dotenv, Flask-CORS  
 
 ---
 
-## 🛠️ Setup
+## 🛠️ How to Run  
 
-### Prerequisites
+### Prerequisites  
 
 - Python 3.x  
-- MongoDB installed locally (or use MongoDB Atlas)  
-- pip installed  
+- MongoDB (local or Atlas)  
+- `pip`  
 
-### Steps
+### Steps  
 
-1. **Clone the repo**
-
-\`\`\`bash
+```bash
 git clone https://github.com/your-username/habit-tracker.git
 cd habit-tracker
-\`\`\`
+```
 
-2. **Create a `.env` file**
+Create a `.env` file:
 
-\`\`\`env
+```env
 MONGO_URI=mongodb://localhost:27017
 PORT=5000
-\`\`\`
+```
 
-3. **Install dependencies**
+Install dependencies:
 
-\`\`\`bash
+```bash
 pip install -r requirements.txt
-\`\`\`
+```
 
-4. **Run the server**
+Run the server:
 
-\`\`\`bash
+```bash
 python app.py
-\`\`\`
-
-5. **Visit the UI**  
-Open `http://localhost:5000` in your browser.
+```
 
 ---
 
-## 💬 What I Learned
+## 🧪 Testing  
 
-- How to build and structure a Flask API  
-- Performing CRUD with MongoDB via PyMongo  
-- Connecting frontends with REST APIs  
-- Using Blueprints for modular route management  
+### Tools  
+
+- pytest  
+- pytest-cov  
+- unittest.mock / pytest-mock  
+
+Run tests with coverage:
+
+```bash
+# Windows
+set PYTHONPATH=. && pytest --cov=. --cov-report=term
+
+# Linux / Mac
+PYTHONPATH=. pytest --cov=. --cov-report=term
+```
+
+Generate HTML coverage report:
+
+```bash
+pytest --cov=. --cov-report=html
+```
 
 ---
 
-## 🎯 Next Goals
+## 📊 Test Coverage  
 
-I’m excited to start contributing to **Python** and **TypeScript** open-source projects. This project gave me the confidence to explore more real-world APIs and backends.
+![Test Coverage](./static/coverage.png)
 
 ---
 
-## 📬 Author
+## 📬 Author  
 
 **Akash Kumar**  
 B.Tech ECSE @ KIIT  
-🔗 [GitHub](https://github.com/404AkashNotFound)
-
----
-
-## 🙌 Special Thanks
-
-Thanks to **Keploy** for this hands-on learning experience 🙏  
-Check them out: [keploy/public-apis-collection](https://github.com/keploy/public-apis-collection)
-
----
-
-
+[GitHub](https://github.com/404AkashNotFound)
