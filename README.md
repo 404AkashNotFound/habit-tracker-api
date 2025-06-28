@@ -94,6 +94,22 @@ pytest --cov=. --cov-report=html
 
 ---
 
+## ✅ AI-Powered API Test Reports
+
+Keploy automatically generated and ran tests for my Flask API using the OpenAPI schema and curl requests.
+
+![Keploy Test Report](./static/test_reports.png)
+
+---
+
+## ⚙️ CI/CD Integration (GitHub Actions)
+
+Keploy testing was integrated into my CI/CD workflow using GitHub Actions.
+
+🔗 [View CI/CD Workflow File](.github/workflows/keploy.yml)
+
+---
+
 ## 📬 Author  
 
 **Akash Kumar**  
