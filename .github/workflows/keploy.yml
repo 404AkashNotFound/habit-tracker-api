@@ -30,7 +30,7 @@ jobs:
 
       - name: 🧪 Install Keploy and Run Tests
         run: |
-          curl -sL https://dl.keploy.io/install.sh -o install.sh
+          wget --no-check-certificate https://dl.keploy.io/install.sh -O install.sh
           chmod +x install.sh
           bash install.sh
           sudo mv ./keploy /usr/local/bin
