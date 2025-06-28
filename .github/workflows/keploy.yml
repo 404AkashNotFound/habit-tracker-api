@@ -23,15 +23,17 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: 🚀 Start Flask server in background
+      - name: 📥 Download Keploy
+        run: |
+          wget https://github.com/keploy/keploy/releases/download/v2.6.14/keploy_linux_amd64.tar.gz
+          tar -xzf keploy_linux_amd64.tar.gz
+          sudo mv keploy /usr/local/bin
+
+      - name: 🚀 Start Flask server
         run: |
           nohup python app.py > server.log 2>&1 &
           sleep 5
 
-      - name: 🧪 Install Keploy and Run Tests
+      - name: 🧪 Run Keploy Tests
         run: |
-          wget --no-check-certificate https://dl.keploy.io/install.sh -O install.sh
-          chmod +x install.sh
-          bash install.sh
-          sudo mv ./keploy /usr/local/bin
-          keploy test -c "python app.py" || echo "Keploy finished with non-zero code"
+          keploy test -c "python app.py" || echo "Keploy tests ran (non-zero code ignored)"
