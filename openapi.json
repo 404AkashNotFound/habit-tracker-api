@@ -1,0 +1,131 @@
+{
+  "definitions": {},
+  "info": {
+    "description": "powered by Flasgger",
+    "termsOfService": "/tos",
+    "title": "A swagger API",
+    "version": "0.0.1"
+  },
+  "paths": {
+    "/habits": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "A list of all habits"
+          }
+        },
+        "summary": "Get all habits"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "properties": {
+                "frequency": {
+                  "type": "string"
+                },
+                "habit": {
+                  "type": "string"
+                },
+                "user": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Habit added"
+          }
+        },
+        "summary": "Add a new habit"
+      }
+    },
+    "/habits/{user}": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Habits for the user"
+          }
+        },
+        "summary": "Get habits by user"
+      }
+    },
+    "/habits/{user}/{habit}": {
+      "delete": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "habit",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Habit deleted"
+          }
+        },
+        "summary": "Delete a habit"
+      },
+      "put": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "habit",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "properties": {
+                "frequency": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Habit updated"
+          }
+        },
+        "summary": "Update an existing habit"
+      }
+    }
+  },
+  "swagger": "2.0"
+}

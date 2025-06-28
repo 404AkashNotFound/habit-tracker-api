@@ -2,12 +2,15 @@ from flask import Flask, render_template
 from flask_cors import CORS
 from dotenv import load_dotenv
 import os
+from flasgger import Swagger
+
 
 from routes import habit_routes
 
 load_dotenv()  # Load env vars from .env file
 
 app = Flask(__name__)
+swagger = Swagger(app)
 CORS(app)
 
 # Register blueprint for API routes
